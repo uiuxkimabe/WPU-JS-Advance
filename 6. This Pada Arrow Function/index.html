@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>This Pada Arrow Function</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <div class="box"></div>
+
+   <script src="script.js"></script>
+   <script>
+      // Konsep This Arrow Function
+      // Constructor Function atau pembuatan object literal tidak bisa menggunakan Arrow Function
+      // karena Arrow Function tidak memiliki konteks this sendiri.
+      // Tapi methode pada function meskipun function declaration atau arrow function bisa digunakan.
+
+      // STEP CARA 1
+
+      // const Mahasiswa = function() {
+      //    this.nama = "Kiki Afrianto"
+      //    this.umur = 30
+      //    this.sayHi = function() {return `Halo, nama saya ${this.nama}, umur saya ${this.umur} Tahun.`}
+      // }
+
+      // const callFunction = new Mahasiswa()
+
+      // STEP CARA 2 (Arrow Function)
+
+      // const Karyawan = function() {
+      //    this.nama = "Kiki Afrianto B";
+      //    this.usia = 30;
+      //    this.sayHello = () => console.info(`Hallo semua, nama saya ${this.nama}, umur saya ${this.usia} Tahun.`)
+      // }
+
+      // const callKaryawan = new Karyawan()
+
+      // STEP CARA 3 Object Literal (Tidak bisa menggunakan Arrow Function)
+
+      // const mhs1 = {
+      //    nama : "Kiki Afrianto",
+      //    usia : 30,
+      //    sayHello : function() {return `Hallo semua, nama saya ${this.nama}, umur saya ${this.usia} Tahun.`}
+      // }
+
+      // Say Hello untuk this.nama dan this.umur bisa menampilakn pesan namun jika diubah methodnya menggunakan arrow function maka akan menjadi undefined
+
+      // Contoh Lain
+
+      // const mhs2 = {
+      //    nama: "Raniah Nurfadilah",
+      //    usia: 20,
+      //    sayHello: () => {
+      //       console.info(`Hallo saya ${this.nama}, dan usia saya ${this.usia} tahun.`)
+      //    } // Kalo pake this. maka undefined karna arrow functin harus ada this nya pada argument
+      // }
+      // Kesimpulannya Arrow Function tidak memiliki konteks this sendiri, sehingga tidak bisa digunakan pada constructor function atau object literal. Namun, Arrow Function bisa digunakan pada method dalam function declaration atau arrow function itu sendiri.
+
+      // CONTOH LAIN
+
+      // Pada function deeclaration arrow function bisa digunakan agar tidak terkena hoisting pada this.
+
+      // Misal
+      // const Mahasiswa = function() {
+      //    this.nama = "Kiki Afrianto"
+      //    this.umur = 30
+      //    this.sayHi = function() {return `Halo, nama saya ${this.nama}, umur saya ${this.umur} Tahun.`}
+
+      //    // Jika Menggunakan konsep this untuk function declaration maka akan terjadi hoisting sehingga this yang di cari langsung ke windownya
+      //    // Jika menggunakan arrow function maka this yang di cari adalah this pada function itu sendiri (object itu sendiri)
+
+      //    // Misal
+
+      //    // setInterval( function () {
+      //    //    console.info(this.umur++); // maka ini tidak akan menambah umur karena this yang di cari adalah window
+      //    // }, 1000);
+
+      //    // Maka
+
+      //    setInterval(() => {
+      //       console.info(this.umur++); // maka ini akan menambah umur karena this yang di cari adalah object itu sendiri
+      //    }, 1000);
+      // }
+
+      // const callFunction = new Mahasiswa()
+
+      // LALU REALNYA KAPAN PENGGUNAAN REAL ARROW FUNCTION?
+
+
+
+
+   </script>
+</body>
+</html>

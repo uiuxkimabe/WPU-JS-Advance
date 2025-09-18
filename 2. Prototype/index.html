@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Prototype</title>
+</head>
+<body>
+   <script>
+
+      // Pada FUnction Declaration menggunakan object.create() kita bisa memanggil object lain (parent) yang bisa di hubungkan dengan objetc yang lainnya
+      // Namun kelemahannya kita tetap mengelola 2 object sekaligus
+      // di javascript ada object bawaan yang di sebut prototype
+      // prototype bekerja di belakang layar yang apabila secara penulisan mirip dengan function declaration
+
+      // Function Declaration
+      // function Mahasiswa(nama, energi) {
+      //    // let mahasiswa = {}  // => penulisan seperti dikerjakan oleh prototype dibelakang
+      //    mahasiswa.nama = nama;
+      //    mahasiswa.energi = energi
+
+      //    // return mahasiswa // => dan mengembalikan return dibelakang layar prototype
+      // }
+
+      // Selanjutnya kita cukup memanfaatkan fitur prototype 
+      // Dengan menggunakan metode cunstructor function seperti berikut
+
+      // function Mahasiswa(nama, energi) {
+      //    // let this = {} // => dibelakang layar membuatkan object kosong di prototype
+      //    this.nama = nama;
+      //    this.energi = energi
+
+      //    // return this //=> dibelakang layar membuatkan return di prototype
+      // }
+
+      // Maka bisa panggil prototypenya, misal jika ingin menambah methode
+      // Mahasiswa.prototype.makan = function(porsi) {
+      //    this.energi += porsi
+      //    console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${porsi}, energi saat ini menjadi ${this.energi}`)
+      // }
+      // Mahasiswa.prototype.main = function(main) {
+      //    this.energi -= main
+      //    console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${main}, energi saat ini menjadi ${this.energi}`)
+      // }
+      // Mahasiswa.prototype.tidur = function(jam) {
+      //    this.energi += jam * 2
+      //    console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${jam}, energi saat ini menjadi ${this.energi}`)
+      // }
+
+      // Melakukan pemanggilan dengan instance object
+      // let rani = new Mahasiswa("Rani", 13)
+
+
+      // Cara dengan prototype inheritance ini juga kurang efektif karna kita tetap mengelola object yg disimpan di prototype
+
+      // Maka ada cara lebih ringkas dengan menggunakan Class (Semacam konsep OOP di javascript)
+
+      // Versi Class
+      class Mahasiswa {
+         constructor(nama, energi) {
+            this.nama = nama;
+            this.energi = energi;
+         }
+         // methode
+         makan(porsi) {
+            this.energi += porsi;
+            return (`Halo ${this.nama}, kamu makan sebanyak ${porsi} porsi, sekarang energimu bertambah jadi ${this.energi}`)
+         }
+
+         main(jam) {
+            this.energi -= jam;
+            return (`Halo ${this.nama}, kamu makan sebanyak ${jam} jam, sekarang energimu bertambah jadi ${this.energi}`)
+         }
+
+         tidur(jam) {
+            this.energi += jam * 2;
+            return (`Halo ${this.nama}, kamu makan sebanyak ${jam} jam, sekarang energimu bertambah jadi ${this.energi}`)
+         }
+      }
+
+      // Instance object
+      let rani = new Mahasiswa("Rani", 13)
+      
+
+   </script>
+</body>
+</html>

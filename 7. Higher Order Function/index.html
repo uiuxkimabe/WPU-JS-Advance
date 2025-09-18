@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Higher Order Function</title>
+</head>
+<body>
+   <script>
+      // Higher Order Function adalah Function yang mengeksekusi sebuah function lain, baik sebagai argument maupun sebagai return value
+      // Function di sebut first class function jika function tersebut dapat dioperasikan seperti data biasa, misalnya disimpan dalam variabel, dikirim sebagai argumen, atau dikembalikan dari fungsi lain.
+
+      // CONTOH 
+      function kerjakanTugas(mataKuliah, finish) {
+         console.info(`Tugas ${mataKuliah} Sedang di Kerjakan ....!`)
+         setTimeout(() => {
+            finish(mataKuliah) // Finish yang di jadikan argument / Parameter adalah sebuah function
+         }, 3000);
+      }
+
+      //Function yang dijadikan sebuah argument maka di sebut CALLBACK.
+      // Sedangkan function yang memiliki CallBack (Function dalam argument) di sebut Higher Order Function.
+
+      // Function Finish
+      function finish(p) {
+         alert(`Tugas ${p} Selesai Sukses Dikerjakan !!`)
+      }
+
+      // kerjakanTugas("Pemograman Web", finish)
+
+      // Contoh Lain High Order Function yang me return sebuah function
+      function counter(max) {
+         let count = 0;
+         function startCounting() {
+            const stopInterval = setInterval(() => {
+            count++;
+            console.info(`Counter: ${count}`);
+               if (count === max) {
+                  alert(`The Counter has been finish on ${max}`)
+                  clearInterval(stopInterval); // untuk menghentikan interval
+               }
+            }, 1000);
+         }
+         return startCounting()
+      }
+
+      counter(10)
+      
+   </script>
+</body>
+</html>

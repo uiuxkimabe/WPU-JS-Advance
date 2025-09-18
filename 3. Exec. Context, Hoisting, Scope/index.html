@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Execution Context, Hoisting, Scope</title>
+</head>
+<body>
+   <script>
+      // EXECUTIION CONTEXT HOISTING & SCOPE
+
+      // var nama = 'Budi';
+      // console.info(nama)
+      
+      // CREATION PHASE
+      // Di JS ada sistem kerja dengan nama creation phase (Fase Pembentukan) yang ada pada Global Context, dimana variable dan function declaration akan dihoist (diangkat) ke atas sebelum kode dieksekusi.
+      // Secara Default akan disii :
+      // var = undefined
+      // function = function declaration / fn()
+      // Inilah yang disebut hoisting, jadi meskipun kita mendeklarasikan variable atau function di bawah kode yang memanggilnya, JS tetap bisa mengenalinya.
+      // window = global object pada browser
+      // this = window
+
+      // EXECUTION PHASE
+      // Setelah creation phase, JS akan masuk ke execution phase (Fase Eksekusi) dimana kode akan dieksekusi sesuai urutan yang ada (dari atas ke bawah).
+
+      // Contoh Lain
+      
+      // var nama = "Kiki Afrianto"
+      // var usia = 30
+
+      // console.info(sayHello())
+      
+      // function sayHello () {
+      //    return `Halo, saya ${nama}, umur saya ${usia} tahun`
+      // }
+
+      // function seolah - olah membuat local execution context
+      // yang di dalam function juga terdapat execution context
+      // setiap function dipanggil, akan membuat eecution xontext baru
+      // selain window, function juga membaca arguments
+
+      // Contoh Lain
+      // var nama = "Kiki Afrianto";
+      // var username = "kiki_afrianto";
+
+      // function cetakURL(username) {
+      //    var linkUrl = "https://instagram.com/" + username;
+      //    return linkUrl;
+      // }
+      // console.info(cetakURL('raninfdlh_'));
+
+      // // Contoh Pada Nesting Function
+      // function a() {
+      //    console.info("ini function a");
+      //    function b(){
+      //       console.info("ini function b")
+      //       function c() {
+      //          console.info("ini function c");
+      //       }
+      //       c()
+      //    }
+      //    b()
+      // }
+      // a()
+
+
+      function satu() {
+         var nama = "KIKI";
+         console.info(nama)
+      }
+
+      function dua() {
+         console.info(nama);
+      }
+
+      console.info(nama);
+      var nama = "Erik";
+      satu()
+      dua("Doddy")
+      console.info(nama); // erik
+      
+   </script>
+</body>
+</html>

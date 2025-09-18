@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Closures</title>
+</head>
+<body>
+   <script>
+      // Closures adalah function yang mereturn function lain
+
+      let nama = "Brata"
+
+      // Lexical Scope
+      function init() {
+         // let nama = "Kiki Afrianto"; //Local Varibale
+
+         // Inner function (closure)
+         // variable yang dipanggil di dalam function tampilkanNama akan mengakses variable terdekat (parent terdekat)
+         // jika ditemukan variable yang sama namun yang 1 berada di global scope (variable di luar function, dpt diakses di mana saja)
+         // maka yang akan diakses adalah variable yang berada di dalam function (local variable)
+         function tampilkanNama(nama) {
+            console.info(nama);
+         }
+         return tampilkanNama
+      }
+      let panggilNama = init()
+      panggilNama("Ibrahim") // Output: Kiki Afrianto
+      panggilNama(nama) // Output: Brata
+   </script>
+</body>
+</html>

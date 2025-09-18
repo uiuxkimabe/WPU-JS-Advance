@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Object Revisited</title>
+</head>
+<body>
+   <script>
+
+      // Berbagai Cara Membuat Object Pada Javascript
+      // 1. Object Literal
+      // 2. PROBLEM tidak efektif untuk object yang banyak
+
+      let mahasiswa1 = {
+         nama: "Kiki Afrianto",
+         energi: 10,
+         makan: function(porsi) {
+            this.energi += porsi
+            return console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${porsi}, energi saat ini menjadi ${this.energi}`)
+         }
+      }
+
+      let mahasiswa2 = {
+         nama: "R. Nurfadillah",
+         energi: 5,
+         makan: function(porsi) {
+            this.energi += porsi
+            return console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${porsi}, energi saat ini menjadi ${this.energi}`)
+         }
+      }
+
+
+      // 2. Function Decalration
+      // - Dengan cara ini tidak perlu membuat object baru setiap object bertambah, cukup pengulangan instance nya saja
+      // - Objectnya harus dir return
+
+      // function Mahasiswa(nama, energi) {
+      //    let mahasiswa = {};
+      //    mahasiswa.nama = nama;
+      //    mahasiswa.energi = energi;
+      //    mahasiswa.makan = function(porsi) {
+      //       mahasiswa.energi += porsi;
+      //       console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${porsi}, energi saat ini menjadi ${this.energi}`)
+      //    }
+
+      //    mahasiswa.main = function(main) {
+      //       mahasiswa.energi -= main;
+      //       console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${main}, energi saat ini menjadi ${this.energi}`)
+      //    }
+
+      //    return mahasiswa
+      // }
+
+      // Apabila kita ingin membuat object baru tinggal melakukan panggil instance objectya saja
+      // contoh mahasiswa 1
+      // let kiki = Mahasiswa("Kiki", 10)
+      // contoh mahasiswa 1
+      // let rani = Mahasiswa("rani", 80)
+
+      // Agar boject tidak terduplikasi di dalam memori kita bisa membuat methodnya dengan membuat object terpisah berisi methode yang ingin di panggil
+
+      const methodMahasiswa = {
+         makan: function(porsi){
+            this.energi += porsi;
+            console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${porsi}, energi saat ini menjadi ${this.energi}`)
+         },
+         main: function(main){
+            this.energi -= main;
+            console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${main}, energi saat ini menjadi ${this.energi}`)
+         },
+         tidur: function(jam){
+            this.energi += jam*2;
+            console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${jam}, energi saat ini menjadi ${this.energi}`)
+         }
+      }
+
+      // function Mahasiswa(nama, energi) {
+      //    let mahasiswa = {}
+      //    mahasiswa.nama = nama;
+      //    mahasiswa.energi = energi;
+      //    mahasiswa.makan = methodMahasiswa.makan;
+      //    mahasiswa.main =  methodMahasiswa.main;
+      //    mahasiswa.tidur =  methodMahasiswa.tidur;
+         
+      //    return mahasiswa
+      // }
+
+      // let rani = Mahasiswa("Rani", 13)
+
+      // Cara demikian juga belum efektif, yang mengharuskan kita mengelola dua object,
+      // yang ke 1 Object parent untuk menampung method
+      // yang ke 2 Object baru yang akan diisi
+      // maka ada solusi dengan menggunakan object.create() , dimana dalam kurung bisa diisi dengan nama object parentnya
+
+      // Contoh function menggunakan object.create()
+
+      function Mahasiswa(nama, energi) {
+         let mahasiswa = Object.create(methodMahasiswa); 
+         // Object.create() diisi methode parentnya, sehingga jika ada penambahan atau pengurangan pada methode parent maka akan berpengaruh pada function baru
+         mahasiswa.nama = nama;
+         mahasiswa.energi = energi;
+
+         return mahasiswa
+      }
+
+      let rani = Mahasiswa("Rani", 13)
+
+
+      // 3. Constructor Function
+      // Menggunakan keyword 'new'
+      // Tidak perlu mendeklarasikan variabel iyang akan di isi object baru dan return nya
+
+       function Hero(nama, energi) {
+         this.nama = nama;
+         this.energi = energi;
+         this.makan = function(porsi) {
+            this.energi += porsi;
+            console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${porsi}, energi saat ini menjadi ${this.energi}`)
+         }
+
+         this.main = function(main) {
+            this.energi -= main;
+            console.info(`Halo ${this.nama} selamat makan, sekarang energimu bertambah ${main}, energi saat ini menjadi ${this.energi}`)
+         }
+      }
+
+      // Cara memanggil functionnya atau jika ingin membuat object baru tingan instansiasi objectnya dengan cara
+      //  let hero1 = new Hero("kiki", 20)
+
+      
+
+
+
+
+
+   </script>
+</body>
+</html>

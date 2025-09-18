@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Arrow Function</title>
+</head>
+<body>
+   <script>
+      // Arrow Function adalah function yang lebih ringkas dari functin expression
+      // Contoh Function Expression
+      // const sayHello = function(nama) {
+      //    return console.info(`Ohio ${nama}`)
+      // }
+      // sayHello("Rani")
+
+      // Menggunkan Arrow Function
+      // const sapa = (nama) => {
+      //    return `Halo ${nama}`
+      // }
+
+      // Jika dibuat lebih ringkas lagi bisa dibuat seperti berikut
+      // Implisit Return
+      const sapa = nama => `Halo ${nama}`
+      console.info(sapa('Kiki'))
+
+      // Jika parameter memilih lebih dari satu , maka harus menggunakan tanda kurung
+      const sayHello = (nama, waktu) => `Selamat ${waktu}, ${nama}`
+      console.info(sayHello('Rani', 'Pagi'))
+      
+      // Jika tidak memiliki parameter maka penulisan sebagai berikut :
+      const catCalling = () => `Meong`
+      console.info(catCalling())
+
+      // Contoh lain untuk kasus function map
+      let contestant = ['Raniah Nurfadilah', 'Kiki Afrianto Brata', 'Doni Ramadan', 'Budi Santoso']
+      let nameQty = []
+
+      // contoh function map biasa tanpa arrow function
+      // const jmlHuruf = contestant.map(function(nama) {
+      //    return nama.length
+      // })
+
+      // cara ke 2 menggunakan arrow function
+      const jmlHuruf = contestant.map((nama) => {
+         return nameQty.push(nama.length)
+      })
+
+      console.info(nameQty)
+
+      // Contoh soal mengembalikan sebuah object
+      const objContestant = contestant.map(nama => ({
+         name: nama,
+         length: nama.length
+      }))
+      // tanda kurung sebelum kurawal pada arrow function digunakan untuk mengembalikan sebuah object
+      // jika langsung  tanda kurawal akan dianggap langsung me return
+      console.info(objContestant)
+
+      // atau cara penulisan kedua
+      const cariKarakter = contestant.map((nama) => {
+         let character = {}
+         character.name = nama,
+         character.length = nama.length
+         return character
+      })
+
+      console.info(cariKarakter)
+
+
+
+
+   </script>
+</body>
+</html>
