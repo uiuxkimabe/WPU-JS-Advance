@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Soal Latihan Lagi</title>
+</head>
+<body>
+   <script>
+
+      // LATIHAN FILTER
+      // SOAL 1
+      const numbers = [2,7,12,15,22,35,42]
+      // Cari angka yang habis di bagi 7
+      const lostIn7 = numbers.filter(angka => angka % 7 === 0)
+      console.info(lostIn7)
+
+      // SOAL 2
+      const words = ["matahari", "bulan", "bintang", "langit"]
+      // Cari kata yang panajangnya lebih dari 5 huruf
+      const wordLength = words.filter(word => {
+         const newWord = []
+         if (word.length > 5) {
+            newWord.push(word)
+            return newWord
+         }
+      })
+      console.info(wordLength)
+
+      // LATIHAN MAP
+      // SOAL 1
+      const price = [1000,2500,3000,5000]
+      // Jadikan semua harga menjadi harga setelah ditambah 10% pajak
+      const afterTax = price.map(tax => (tax * 0.1) + tax)
+      console.info(afterTax)
+
+      // SOAL 2
+      const names = ["rani", "budi", "ani", "siti"]
+      // Buat huruf pertama dari setiap nama menjadi huruf kapital
+      const changeNames = names.map(nama => nama.charAt(0).toUpperCase() + nama.slice(1).toLowerCase())
+      console.info(changeNames)
+
+      // LATIHAN REDUCE
+      // SOAL 1
+      const total = [5,10,15,20]
+      // Hitung jumlah total angka
+      const summary = total.reduce((angka, totalangka) => angka + totalangka)
+      console.info(summary)
+
+      // SOAL 2
+      const fruits = ["apel", "jeruk", "apel", "mangga", "jeruk", "apel"]
+      // Hitung berapa kali setiap buah muncul (dalam bentuk objek)
+      const countFruits = fruits.reduce((count, fruit) => {
+         count[fruit] = (count[fruit] || 0) + 1
+         return count
+      },{})
+      console.info(countFruits)
+
+      // LATIHAN GABUNGAN FILTER, MAP, REDUCE
+      const students = [
+         {name: "andi", score: 80, kelas: "A"},
+         {name: "budi", score: 50, kelas: "B"},
+         {name: "caca", score: 70, kelas: "A"},
+         {name: "dodi", score: 90, kelas: "B"},
+         {name: "erik", score: 60, kelas: "A"},
+      ]
+      // Gunakan filter untuk memilih siswa yang nilainya >= 60
+      const resultStudents = students.filter(score => score.score >= 60)
+      // Gunakan Map, Ambil nama Siswa
+      .map(names => names.name)
+      console.info(resultStudents)
+      // Gunakan reduce untuk hitung rata-rata nilai siswa yang lulus (diatas 60)
+      const avrScore = students.reduce((lastScore, currScore) => (lastScore + currScore.score),0) / students.length;
+      console.info(avrScore)
+
+
+
+
+
+   </script>
+</body>
+</html>

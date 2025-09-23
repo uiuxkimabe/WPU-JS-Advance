@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Latihan 2 Filter Map dan Reduce</title>
+</head>
+<body>
+   <script>
+      // Tugas:   
+      // Buat array baru yang hanya berisi angka lebih besar dari 10.
+      const numbers = [1, 4, 7, 10, 15, 20, 25];
+
+      // Jawaban angka lebih besar dari 10
+      const max = numbers.filter(numb => numb > 10);
+      console.info(max)
+
+      // Tugas:
+      // Buat array baru yang berisi nama-nama dengan huruf pertama kapital (contoh: "Andi").
+      const names = ["andi", "budi", "sari", "wulan"];
+
+      // Jawaban array huruf kapital
+      const capital = names.filter(names => names.length > 0).map(names => names.charAt(0).toUpperCase() + names.slice(1));
+      console.info(capital)
+
+      // Tugas:
+      // Hitung total harga dari semua item.
+      const prices = [10000, 15000, 20000, 5000];
+
+      // Jawaban total price
+      const result = prices.reduce((old, curr) => old + curr)
+      console.info(result)
+
+      // Tugas:
+      // Hitung total pembelian setiap customer.
+      // Filter customer yang total pembeliannya di atas 20.000.
+      // Ambil nama customer dalam huruf kapital.
+
+      const orders = [
+         { customer: "A", items: [10000, 20000] },
+         { customer: "B", items: [5000] },
+         { customer: "C", items: [15000, 5000, 10000] },
+      ];
+
+      const totalPayment = orders.map(order => {
+         return {
+            customer: order.customer,
+            totalItems: order.items.reduce((oldP,newP) => oldP + newP)
+         }
+      }).filter(totalOrder => totalOrder.totalItems > 20000).map(nameCap => {
+         return {
+            customer: nameCap.customer.toUpperCase(),
+         }
+      })
+
+      console.info(totalPayment)
+
+   </script>
+</body>
+</html>
