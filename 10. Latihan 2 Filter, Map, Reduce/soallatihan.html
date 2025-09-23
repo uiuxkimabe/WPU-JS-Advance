@@ -61,17 +61,22 @@
          {name: "andi", score: 80, kelas: "A"},
          {name: "budi", score: 50, kelas: "B"},
          {name: "caca", score: 70, kelas: "A"},
-         {name: "dodi", score: 90, kelas: "B"},
+         {name: "rani", score: 90, kelas: "B"},
          {name: "erik", score: 60, kelas: "A"},
       ]
       // Gunakan filter untuk memilih siswa yang nilainya >= 60
       const resultStudents = students.filter(score => score.score >= 60)
-      // Gunakan Map, Ambil nama Siswa
-      .map(names => names.name)
       console.info(resultStudents)
+      // Gunakan Map, Ambil nama Siswa
+      const passedNames = resultStudents.map(names => names.name)
+      console.info(passedNames)
       // Gunakan reduce untuk hitung rata-rata nilai siswa yang lulus (diatas 60)
       const avrScore = students.reduce((lastScore, currScore) => (lastScore + currScore.score),0) / students.length;
       console.info(avrScore)
+
+      
+      console.info(`Nama murid yang lulus : ${passedNames}`)
+      console.info(`Nilai rata - rata murid : ${avrScore}`)
 
 
 
